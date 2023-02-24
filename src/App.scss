@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+$primary: hsl(193, 38%, 86%);
+$secondary: hsl(150, 100%, 66%);
+
+$neutral1: hsl(217, 19%, 38%);
+$neutral2: hsl(217, 19%, 24%);
+$neutral3: hsl(218, 23%, 16%);
+
+$font-size: 28px;
+
+@mixin flexBox($flexDirection: row, $AlignItems: center, $JustifyContent: center) {
+    display: flex;
+    align-items: $AlignItems;
+    justify-content: $JustifyContent;
+    flex-direction: $flexDirection;
+}
+
+body {
+    background-color: $neutral3;
+    font-family: Manrope;
+    height: 100vh;
+
+
+
+    .complete {
+        @include flexBox();
+
+
+
+        main {
+            text-align: center;
+            max-width: 40rem;
+            background-color: $neutral1;
+            color: $primary;
+            padding: 1rem;
+            border-radius: 1rem;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+
+            .advice_no {
+                color: $secondary;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                font-size: 0.8rem;
+            }
+
+            .advice {
+                color: $primary;
+                font-weight: 800;
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    .attribution {
+        font-size: 0.7rem;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        color: $primary;
+        transform: translateX(-50%);
+        @include flexBox($flexDirection: column);
+
+        span {
+
+
+            .attr_link {
+                color: $secondary;
+            }
+        }
+    }
+}
