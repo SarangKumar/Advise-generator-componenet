@@ -9,6 +9,9 @@ $neutral3: hsl(218, 23%, 16%);
 
 $font-size: 28px;
 
+$breakpoint-desktop: 1440px;
+$breakpoint-mobile: 375px;
+
 @mixin flexBox($flexDirection: row, $AlignItems: center, $JustifyContent: center) {
     display: flex;
     align-items: $AlignItems;
@@ -19,24 +22,22 @@ $font-size: 28px;
 body {
     background-color: $neutral3;
     font-family: Manrope;
-    height: 100vh;
-
-
 
     .complete {
+        height: 95vh;
         @include flexBox();
 
-
-
         main {
+            @include flexBox($flexDirection: column);
+            position: relative;
             text-align: center;
-            max-width: 40rem;
-            background-color: $neutral1;
+            max-width: 30rem;
+            background-color: $neutral2;
             color: $primary;
             padding: 1rem;
             border-radius: 1rem;
-            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            padding-bottom: 2rem;
 
             .advice_no {
                 color: $secondary;
@@ -49,6 +50,57 @@ body {
                 color: $primary;
                 font-weight: 800;
                 font-size: 1.2rem;
+            }
+
+            .divide_d,
+            .divide_m {
+                display: none;
+                align-items: center;
+                margin: 0.5rem 0;
+            }
+
+
+            @media (min-width: $breakpoint-mobile) {
+                .divide_m {
+                    display: block;
+                }
+
+                .divide_d {
+                    display: none;
+                }
+            }
+
+            @media (min-width: $breakpoint-desktop) {
+                .divide_d {
+                    display: block;
+                }
+
+                .divide_m {
+                    display: none;
+                }
+            }
+
+            #dice {
+                @include flexBox;
+                cursor: pointer;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translate(-50%, 50%);
+                height: 3rem;
+                width: 3rem;
+                border-radius: 50%;
+                background-color: $secondary;
+                transition: all 300ms ease;
+                border: none;
+
+                &:hover {
+                    box-shadow: 0 0 30px 5px $secondary,
+                }
+
+                img {
+                    height: 1rem
+                }
             }
         }
     }
